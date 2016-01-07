@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sci.servicehub.model.Company;
 import com.sci.servicehub.model.Invoice;
 import com.sci.servicehub.model.Request;
-import com.sci.servicehub.model.Response;
 import com.sci.servicehub.model.Role;
 import com.sci.servicehub.model.Route;
 import com.sci.servicehub.model.UserData;
@@ -33,12 +32,12 @@ public class TransactionController
     private final AtomicLong    counter  = new AtomicLong();
 
     @RequestMapping(value = "/transaction/open", method = RequestMethod.POST)
-    public ResponseEntity<Response> transactionOpen(@RequestBody Request req)
+    public ResponseEntity<UserData> transactionOpen(@RequestBody Request req)
     {
         
         if (req.getUserName().equals("None") || req.getPassword().equals("None"))
         {
-            return new ResponseEntity<Response>(HttpStatus.NON_AUTHORITATIVE_INFORMATION);            
+            return new ResponseEntity<UserData>(HttpStatus.NON_AUTHORITATIVE_INFORMATION);            
         }        
 
         UserData ud = new UserData();
@@ -78,16 +77,15 @@ public class TransactionController
         company.setRuc("1678711-1-681562 DV 70");
         
         ud.getCompanies().add(company);
-        //return new ResponseEntity<UserData>(ud, HttpStatus.OK);
-        return new ResponseEntity<Response>(HttpStatus.OK);
+        return new ResponseEntity<UserData>(ud, HttpStatus.OK);            
     }
-/*
+
     @RequestMapping(value = "/transaction/invoice", method = RequestMethod.POST)
-    public ResponseEntity<Response> transactionInvoice(@RequestBody Invoice invoice)
+    public ResponseEntity<Invoice> transactionInvoice(@RequestBody Invoice invoice)
     {
 
-        return new ResponseEntity<Response>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Invoice>(HttpStatus.NO_CONTENT);
         
     }
-*/    
+    
 }
