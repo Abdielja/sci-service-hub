@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sci.servicehub.model.Company;
+import com.sci.servicehub.model.Invoice;
 import com.sci.servicehub.model.Request;
+import com.sci.servicehub.model.Response;
 import com.sci.servicehub.model.Role;
 import com.sci.servicehub.model.Route;
 import com.sci.servicehub.model.UserData;
@@ -32,12 +33,12 @@ public class TransactionController
     private final AtomicLong    counter  = new AtomicLong();
 
     @RequestMapping(value = "/transaction/open", method = RequestMethod.POST)
-    public ResponseEntity<UserData> transaction(@RequestBody Request req)
+    public ResponseEntity<Response> transactionOpen(@RequestBody Request req)
     {
         
         if (req.getUserName().equals("None") || req.getPassword().equals("None"))
         {
-            return new ResponseEntity<UserData>(HttpStatus.BAD_REQUEST);            
+            return new ResponseEntity<Response>(HttpStatus.NON_AUTHORITATIVE_INFORMATION);            
         }        
 
         UserData ud = new UserData();
@@ -77,7 +78,16 @@ public class TransactionController
         company.setRuc("1678711-1-681562 DV 70");
         
         ud.getCompanies().add(company);
-        return new ResponseEntity<UserData>(ud, HttpStatus.OK);
+        //return new ResponseEntity<UserData>(ud, HttpStatus.OK);
+        return new ResponseEntity<Response>(HttpStatus.OK);
     }
-    
+/*
+    @RequestMapping(value = "/transaction/invoice", method = RequestMethod.POST)
+    public ResponseEntity<Response> transactionInvoice(@RequestBody Invoice invoice)
+    {
+
+        return new ResponseEntity<Response>(HttpStatus.NO_CONTENT);
+        
+    }
+*/    
 }
