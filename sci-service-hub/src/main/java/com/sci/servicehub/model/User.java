@@ -2,6 +2,12 @@ package com.sci.servicehub.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class User
 {
 
@@ -12,7 +18,7 @@ public class User
     
     // ********** Properties **********
     
-    private long oid;
+    private long id;
     private String serverId;
     private String userName;
     private String password;
@@ -22,18 +28,20 @@ public class User
     private LocalDate lastBalanceDate;
         
     /**
-     * @return the oid
+     * @return the id
      */
-    public long getOid()
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public long getId()
     {
-        return oid;
+        return id;
     }
     /**
-     * @param oid the oid to set
+     * @param oid the id to set
      */
-    public void setOid(long oid)
+    public void setId(long id)
     {
-        this.oid = oid;
+        this.id = id;
     }
 
     /**
@@ -140,4 +148,21 @@ public class User
     {
         this.lastBalanceDate = lastBalanceDate;
     }
+    
+    
+    // ***** Constructors *****
+
+    public User()
+    {
+    	
+    }
+    
+    // ***** public Methods *****
+    
+    @Override
+    public String toString() 
+    {
+        return String.format("User[id=%d, name='%s']", id, name);
+    }
+    
 }

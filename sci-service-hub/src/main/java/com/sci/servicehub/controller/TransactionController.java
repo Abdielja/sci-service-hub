@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sci.servicehub.core;
+package com.sci.servicehub.controller;
 
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicLong;
