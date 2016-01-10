@@ -6,6 +6,7 @@ package com.sci.servicehub.controller;
 import java.time.LocalDate;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,9 @@ import com.sci.servicehub.model.Invoice;
 import com.sci.servicehub.model.Request;
 import com.sci.servicehub.model.Role;
 import com.sci.servicehub.model.Route;
+import com.sci.servicehub.model.User;
 import com.sci.servicehub.model.UserData;
+import com.sci.servicehub.repository.UserRepository;
 
 /**
  * @author abdiel Jaramillo
@@ -29,17 +32,36 @@ import com.sci.servicehub.model.UserData;
 public class TransactionController
 {
 
+    @Autowired
+    UserRepository userRepo;
+    
     private final AtomicLong    counter  = new AtomicLong();
 
     @RequestMapping(value = "/transaction/open", method = RequestMethod.POST)
     public ResponseEntity<UserData> transactionOpen(@RequestBody Request req)
     {
         
+        // *** Verify parameters are not empty ***
         if (req.getUserName().equals("None") || req.getPassword().equals("None"))
         {
             return new ResponseEntity<UserData>(HttpStatus.NON_AUTHORITATIVE_INFORMATION);            
         }        
 
+        User user = userRepo.findByUserName(req.getUserName());
+        
+        // *** Verify user credentials ***
+        if (user != null)
+        {
+            if(!user.getPassword().equals(req.getPassword()))
+            {
+                return new ResponseEntity<UserData>(HttpStatus.UNAUTHORIZED);                                
+            }
+        }
+        else
+        {
+            return new ResponseEntity<UserData>(HttpStatus.UNAUTHORIZED);                        
+        }
+        
         UserData ud = new UserData();
         
         ud.setOid(counter.incrementAndGet());
