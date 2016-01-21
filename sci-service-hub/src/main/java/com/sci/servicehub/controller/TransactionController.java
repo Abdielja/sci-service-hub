@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.sci.servicehub.model.Company;
 import com.sci.servicehub.model.Invoice;
@@ -21,6 +22,7 @@ import com.sci.servicehub.model.Role;
 import com.sci.servicehub.model.Route;
 import com.sci.servicehub.model.User;
 import com.sci.servicehub.model.UserData;
+import com.sci.servicehub.model.example.Quote;
 import com.sci.servicehub.repository.UserRepository;
 
 /**
@@ -36,6 +38,7 @@ public class TransactionController
     UserRepository userRepo;
     
     private final AtomicLong    counter  = new AtomicLong();
+
 
     @RequestMapping(value = "/transaction/open", method = RequestMethod.POST)
     public ResponseEntity<UserData> transactionOpen(@RequestBody Request req)
@@ -109,5 +112,18 @@ public class TransactionController
         return new ResponseEntity<Invoice>(HttpStatus.NO_CONTENT);
         
     }
+
+    @RequestMapping(value = "/transaction/quote", method = RequestMethod.GET)
+    public ResponseEntity<Quote> transactionQuote()
+    {
     
+        RestTemplate restTemplate = new RestTemplate();
+        Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+        
+        System.out.println("\n" + quote + "\n");
+        
+        return new ResponseEntity<Quote>(quote, HttpStatus.OK);
+    }
+    
+
 }

@@ -31,7 +31,7 @@ public class UserRestService
         UserData ud = null;
 
         RestTemplate restTemplate = new RestTemplate();
-        RestResponse res = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", RestResponse.class);
+        //RestResponse res = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", RestResponse.class);
         
         return ud;
         
