@@ -3,6 +3,8 @@
  */
 package com.sci.servicehub.service.remote;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.sci.servicehub.model.UserData;
@@ -12,9 +14,12 @@ import com.sci.servicehub.model.UserData;
  *
  */
 
+@Service
 public class UserRestService
 {
-
+    @Value("${service-hub.openbravo.rest-url-json}")
+    private String openbravoRestUrlJson;
+    
     // ***** Constructors *****
     
     public UserRestService()
@@ -29,7 +34,9 @@ public class UserRestService
     {
      
         UserData ud = null;
-
+        
+System.out.println("\nOpenbravo Rest URl: " + openbravoRestUrlJson);
+        
         RestTemplate restTemplate = new RestTemplate();
         //RestResponse res = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", RestResponse.class);
         

@@ -24,6 +24,7 @@ import com.sci.servicehub.model.User;
 import com.sci.servicehub.model.UserData;
 import com.sci.servicehub.model.example.Quote;
 import com.sci.servicehub.repository.UserRepository;
+import com.sci.servicehub.service.remote.UserRestService;
 
 /**
  * @author abdiel Jaramillo
@@ -36,6 +37,9 @@ public class TransactionController
 
     @Autowired
     UserRepository userRepo;
+    
+    @Autowired
+    UserRestService userRestService;
     
     private final AtomicLong    counter  = new AtomicLong();
 
@@ -64,6 +68,8 @@ public class TransactionController
         {
             return new ResponseEntity<UserData>(HttpStatus.UNAUTHORIZED);                        
         }
+
+        UserData tud = userRestService.GetUserData();
         
         UserData ud = new UserData();
         
