@@ -6,13 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import com.sci.servicehub.model.User;
 import com.sci.servicehub.repository.UserRepository;
 
 @SpringBootApplication
-@EnableConfigurationProperties(ServiceHubProperties.class) 
 public class Application implements CommandLineRunner
 {
    
