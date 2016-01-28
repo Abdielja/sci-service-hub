@@ -3,17 +3,21 @@
  */
 package com.sci.servicehub.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.sci.servicehub.model.Invoice;
 import com.sci.servicehub.model.Request;
+import com.sci.servicehub.model.RestResponse;
 import com.sci.servicehub.model.User;
 import com.sci.servicehub.model.UserData;
 import com.sci.servicehub.model.example.Quote;
@@ -65,6 +69,24 @@ public class TransactionController
         return new ResponseEntity<UserData>(ud, HttpStatus.OK);            
     }
 
+    @RequestMapping(value = "/transaction/paymentTerms", method = RequestMethod.GET)
+    public ResponseEntity<RestResponse> transactionPaymentTerms(@RequestParam Map<String,String> requestParams)
+    {
+    
+        RestResponse res = userRestService.getPaymentTerms(requestParams.get("userName"), requestParams.get("password"));
+        
+        return new ResponseEntity<RestResponse>(res, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/transaction/paymentMethods", method = RequestMethod.GET)
+    public ResponseEntity<RestResponse> transactionPaymentMethods(@RequestParam Map<String,String> requestParams)
+    {
+    
+        RestResponse res = userRestService.getPaymentMethods(requestParams.get("userName"), requestParams.get("password"));
+        
+        return new ResponseEntity<RestResponse>(res, HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/transaction/invoice", method = RequestMethod.POST)
     public ResponseEntity<Invoice> transactionInvoice(@RequestBody Invoice invoice)
     {

@@ -2,6 +2,7 @@ package com.sci.servicehub.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -62,6 +63,7 @@ public class User
     /**
      * @return the userName
      */
+    @Column(unique=true)
     public String getUserName()
     {
         return userName;

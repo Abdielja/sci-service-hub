@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import com.sci.servicehub.model.User;
 import com.sci.servicehub.repository.UserRepository;
@@ -27,6 +28,15 @@ public class Application implements CommandLineRunner
     @Override
     public void run(String... strings) throws Exception 
     {
+        initDatabase();
+        
+        System.out.println("Lookup user by userName...");
+        System.out.println("\t" + userRepository.findByUserName("ENatis"));
+    }
+    
+    private void initDatabase()
+    {
+        
         User enatis = new User();
         enatis.setUserName("ENatis");
         enatis.setPassword("123");
@@ -35,10 +45,16 @@ public class Application implements CommandLineRunner
         enatis.setStatus(User.STATUS_OPEN);
         enatis.setServerId("1081EFAA375B683B01378991228E39CB");
 
-        userRepository.save(enatis);
+        try
+        {
+            userRepository.save(enatis);
+            
+        }
+        catch(DataIntegrityViolationException dive)
+        {
+            System.out.println("\nDatabase Error: " + dive.getMessage() + "\n");
+        }
 
-        System.out.println("Lookup user by userName...");
-        System.out.println("\t" + userRepository.findByUserName("ENatis"));
     }
     
 }

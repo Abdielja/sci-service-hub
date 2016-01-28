@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.sci.servicehub.model.Company;
+import com.sci.servicehub.model.Response;
+import com.sci.servicehub.model.RestResponse;
 import com.sci.servicehub.model.Role;
 import com.sci.servicehub.model.Route;
 import com.sci.servicehub.model.UserData;
@@ -97,6 +99,24 @@ public class UserRestService
         
         return ud;
         
+    }
+    
+    public RestResponse getPaymentTerms(String userName, String password)
+    {
+    
+        RestTemplate restTemplate = new RestTemplate();
+        RestResponse res = restTemplate.getForObject("http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_PAYMENTTERM_V?&l=" + userName + "&p=" + password, RestResponse.class);
+
+        return res;
+    }
+    
+    public RestResponse getPaymentMethods(String userName, String password)
+    {
+    
+        RestTemplate restTemplate = new RestTemplate();
+        RestResponse res = restTemplate.getForObject("http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_PAYMENTMETHOD_V?_where=username='ORodriguez'&l=" + userName + "&p=" + password, RestResponse.class);
+
+        return res;
     }
     
 }
