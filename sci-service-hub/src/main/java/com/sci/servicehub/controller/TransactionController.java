@@ -69,6 +69,24 @@ public class TransactionController
         return new ResponseEntity<UserData>(ud, HttpStatus.OK);            
     }
 
+    @RequestMapping(value = "/transaction/salesman", method = RequestMethod.GET)
+    public ResponseEntity<RestResponse> transactionSalesmanInfo(@RequestParam Map<String,String> requestParams)
+    {
+    
+        RestResponse res = userRestService.getSalesmanInfo(requestParams.get("userId"), requestParams.get("userName"), requestParams.get("password"));
+        
+        return new ResponseEntity<RestResponse>(res, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/transaction/customer", method = RequestMethod.GET)
+    public ResponseEntity<RestResponse> transactionCustomersByUser(@RequestParam Map<String,String> requestParams)
+    {
+    
+        RestResponse res = userRestService.getCustomersByUser(requestParams.get("userId"), requestParams.get("userName"), requestParams.get("password"));
+        
+        return new ResponseEntity<RestResponse>(res, HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/transaction/paymentTerms", method = RequestMethod.GET)
     public ResponseEntity<RestResponse> transactionPaymentTerms(@RequestParam Map<String,String> requestParams)
     {

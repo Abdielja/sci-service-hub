@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.sci.servicehub.model.Company;
-import com.sci.servicehub.model.Response;
 import com.sci.servicehub.model.RestResponse;
 import com.sci.servicehub.model.Role;
 import com.sci.servicehub.model.Route;
@@ -50,7 +49,7 @@ public class UserRestService
      
         UserData ud = null;
         
-        RestTemplate restTemplate = new RestTemplate();
+        //RestTemplate restTemplate = new RestTemplate();
         //RestResponse res = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", RestResponse.class);
  
         // ***** This is for debugging purposes only ***** 
@@ -99,6 +98,24 @@ public class UserRestService
         
         return ud;
         
+    }
+    
+    public RestResponse getSalesmanInfo(String userId, String userName, String password)
+    {
+        
+        RestTemplate restTemplate = new RestTemplate();
+        RestResponse res = restTemplate.getForObject("http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_USUARIOS_VENDEDOR_V?_where=username='" + userId + "'&l=" + userName + "&p=" + password, RestResponse.class);
+
+        return res;
+    }
+    
+    public RestResponse getCustomersByUser(String userId, String userName, String password)
+    {
+        
+        RestTemplate restTemplate = new RestTemplate();
+        RestResponse res = restTemplate.getForObject("http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_CLIENTE_DIA_VISITA_V?_where=username='" + userId + "'&l=" + userName + "&p=" + password, RestResponse.class);
+
+        return res;
     }
     
     public RestResponse getPaymentTerms(String userName, String password)
