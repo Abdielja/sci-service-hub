@@ -1,0 +1,309 @@
+{
+  "_type": "export",
+  "__export_format": 1,
+  "__export_date": "2016-02-03T14:34:44.708Z",
+  "__export_source": "insomnia.chrome.app:v2.2.1",
+  "items": [
+    {
+      "_type": "request_group",
+      "_id": "grp_1453850027697",
+      "name": "SCI Service Hub",
+      "environments": {},
+      "requests": [
+        {
+          "_type": "request",
+          "_id": "req_1453850027698",
+          "url": "http://190.140.56.230:8080/transaction/open",
+          "method": "POST",
+          "body": "{\n    \"userName\" : \"ENatis\",\n    \"password\" : \"123\"\n}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "GetUserData"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1453932321386",
+          "url": "http://190.140.56.230:8080/transaction/paymentTerms?userName=DNDAdmin&password=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "GetPaymentTerms"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1453945774066",
+          "url": "http://190.140.56.230:8080/transaction/paymentMethods?userName=DNDAdmin&password=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "GetPaymentMethods"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454020485181",
+          "url": "http://190.140.56.230:8080/transaction/salesman?userId=ORodriguez&userName=DNDAdmin&password=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "GetSalesmanInfo"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454021663952",
+          "url": "http://190.140.56.230:8080/transaction/customer?userId=ORodriguez&userName=DNDAdmin&password=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "GetCustomersByUser"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454509225711",
+          "url": "http://190.140.56.230:8080/transaction/organization?userId=ORodriguez&userName=DNDAdmin&password=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "GetOrganizationsByUser"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454509712113",
+          "url": "http://190.140.56.230:8080/transaction/product?userId=ORodriguez&userName=DNDAdmin&password=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "GetProductsByUser"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454509792866",
+          "url": "http://190.140.56.230:8080/transaction/taxCategory?userName=DNDAdmin&password=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "GetTaxCategories"
+        }
+      ]
+    },
+    {
+      "_type": "request_group",
+      "_id": "grp_1453928325877",
+      "name": "Openbravo",
+      "environments": {},
+      "requests": [
+        {
+          "_type": "request",
+          "_id": "req_1453928325878",
+          "url": "http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_PAYMENTTERM_V?l=DNDAdmin&p=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "Payment Term"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1453945245868",
+          "url": "http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_PAYMENTMETHOD_V?_where=username='ORodriguez'&l=DNDAdmin&p=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "Payment Method"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454019652193",
+          "url": "http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_USUARIOS_VENDEDOR_V?_where=username='ORodriguez'&l=DNDAdmin&p=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "Salesman Info"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454020628846",
+          "url": "http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_CLIENTE_DIA_VISITA_V?_where=username='ORodriguez'&l=DNDAdmin&p=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "Customers"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454509108881",
+          "url": "http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_ORGANIZACIONES_V?_where=username='ORodriguez'&l=DNDAdmin&p=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "Organizations"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454509139928",
+          "url": "http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_PRODUCT_QTY_V?_where=username='ORodriguez'&l=DNDAdmin&p=123",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "Products"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1454509184816",
+          "url": "",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "TaxCategories"
+        }
+      ]
+    }
+  ]
+}

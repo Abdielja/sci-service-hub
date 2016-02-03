@@ -118,6 +118,33 @@ public class UserRestService
         return res;
     }
     
+    public RestResponse getOrganizationsByUser(String userId, String userName, String password)
+    {
+        
+        RestTemplate restTemplate = new RestTemplate();
+        RestResponse res = restTemplate.getForObject("http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_ORGANIZACIONES_V?_where=username='" + userId + "'&l=" + userName + "&p=" + password, RestResponse.class);
+
+        return res;
+    }
+    
+    public RestResponse getProductsByUser(String userId, String userName, String password)
+    {
+        
+        RestTemplate restTemplate = new RestTemplate();
+        RestResponse res = restTemplate.getForObject("http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_PRODUCT_QTY_V?_where=username='" + userId + "'&l=" + userName + "&p=" + password, RestResponse.class);
+
+        return res;
+    }
+    
+    public RestResponse getTaxCategories(String userName, String password)
+    {
+    
+        RestTemplate restTemplate = new RestTemplate();
+        RestResponse res = restTemplate.getForObject("http://190.219.6.238:9095/OBDND/org.openbravo.service.json.jsonrest/DND_PAYMENTTERM_V?&l=" + userName + "&p=" + password, RestResponse.class);
+
+        return res;
+    }
+    
     public RestResponse getPaymentTerms(String userName, String password)
     {
     

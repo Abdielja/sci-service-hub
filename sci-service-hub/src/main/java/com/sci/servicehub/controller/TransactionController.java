@@ -87,6 +87,33 @@ public class TransactionController
         return new ResponseEntity<RestResponse>(res, HttpStatus.OK);
     }
     
+    @RequestMapping(value = "/transaction/organization", method = RequestMethod.GET)
+    public ResponseEntity<RestResponse> transactionOrganizationsByUser(@RequestParam Map<String,String> requestParams)
+    {
+    
+        RestResponse res = userRestService.getOrganizationsByUser(requestParams.get("userId"), requestParams.get("userName"), requestParams.get("password"));
+        
+        return new ResponseEntity<RestResponse>(res, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/transaction/product", method = RequestMethod.GET)
+    public ResponseEntity<RestResponse> transactionProductsByUser(@RequestParam Map<String,String> requestParams)
+    {
+    
+        RestResponse res = userRestService.getProductsByUser(requestParams.get("userId"), requestParams.get("userName"), requestParams.get("password"));
+        
+        return new ResponseEntity<RestResponse>(res, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/transaction/taxCategory", method = RequestMethod.GET)
+    public ResponseEntity<RestResponse> transactionTaxCategories(@RequestParam Map<String,String> requestParams)
+    {
+    
+        RestResponse res = userRestService.getTaxCategories(requestParams.get("userName"), requestParams.get("password"));
+        
+        return new ResponseEntity<RestResponse>(res, HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/transaction/paymentTerms", method = RequestMethod.GET)
     public ResponseEntity<RestResponse> transactionPaymentTerms(@RequestParam Map<String,String> requestParams)
     {
